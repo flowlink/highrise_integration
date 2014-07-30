@@ -1,0 +1,17 @@
+{
+  "id": "12233434",
+  "firstname": "Luis",
+  "lastname": "B",
+  "email": "luis@gmail.com",
+  "billing_address": {
+    "firstname": "Joe",
+    "lastname": "Smith",
+    "address1": "1234 Awesome Street",
+    "address2": "",
+    "zipcode": "90210",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "0000000000"
+  }
+}
