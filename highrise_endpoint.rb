@@ -3,7 +3,6 @@ require "endpoint_base/sinatra"
 Dotenv.load
 
 module HighriseEndpoint
-
   class Application < EndpointBase::Sinatra::Base
     # optional security check, value supplied is compared against HTTP_X_HUB_TOKEN header
     # which is included in all requests sent by the hub, header is unique per integration.
@@ -24,7 +23,7 @@ module HighriseEndpoint
       }.join("\n")
     end
 
-    def add_customer(payload)
+    def handle_customer(payload)
       people = Highrise::Person.search(customer_id: payload[:customer][:id])
 
       tags = if @payload[:customer][:highrise_tags] && @payload[:customer][:highrise_tags][:person]
@@ -64,9 +63,9 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          jbuilder :update_customer_success
+          result 200, "Person was updated on Highrise."
         else
-          jbuilder :update_customer_failure
+          result 500, @person.errors[:base].join("; ")
         end
       else
         structure = HighriseEndpoint::PersonBlueprint.new(payload: payload).build
@@ -87,15 +86,14 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          jbuilder :add_customer_success
+          result 200, "Person was added to Highrise."
         else
-          jbuilder :add_customer_failure
+          result 500, @person.errors[:base].join("; ")
         end
       end
     end
-    alias_method :update_customer, :add_customer
 
-    def add_order(payload)
+    def handle_order(payload)
       deals = Highrise::Deal.all
       deals = deals.map{ |deal|
          deal if deal.name == "Order ##{payload[:order][:id]}"
@@ -156,9 +154,9 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          jbuilder :update_order_success
+          result 200, "Deal was updated on Highrise."
         else
-          jbuilder :update_order_failure
+          result 500, @deal.errors[:base].join("; ")
         end
       else
         structure = HighriseEndpoint::DealBlueprint.new(payload: payload).build
@@ -191,15 +189,14 @@ module HighriseEndpoint
 
           @note = Highrise::Note.create(body: line_items_to_string(payload[:order][:line_items]), subject_id: @deal.id, subject_type: "Deal")
 
-          jbuilder :add_order_success
+          result 200, "Deal was added to Highrise."
         else
-          jbuilder :add_order_failure
+          result 500, @deal.errors[:base].join("; ")
         end
       end
     end
-    alias_method :update_order, :add_order
 
-    def add_shipment(payload)
+    def handle_shipment(payload)
       @shipment = payload[:shipment]
 
       deals = Highrise::Deal.all
@@ -267,37 +264,29 @@ SHIPMENT_BODY
 
 
         if @note.save
-          jbuilder :add_shipment_success
+          result 200, "Shipment info was added to deal: #{@deal.name}"
         else
-          jbuilder :add_shipment_failure
+          result 500, @note.errors[:base].join(", ")
         end
       end
     end
-    alias_method :update_shipment, :add_shipment
 
-    # Adds new customer to Highrise from spree hub.
-    post "/add_customer" do
-      add_customer(@payload)
+    ["/add_customer", "/update_customer"].each do |path|
+      post path do
+        handle_customer @payload
+      end
     end
 
-    post "/update_customer" do
-      update_customer(@payload)
+    ["/add_order", "/update_order"].each do |path|
+      post path do
+        handle_order @payload
+      end
     end
 
-    post "/add_order" do
-      add_order(@payload)
-    end
-
-    post "/update_order" do
-      update_order(@payload)
-    end
-
-    post "/add_shipment" do
-      add_shipment(@payload)
-    end
-
-    post "/update_shipment" do
-      update_shipment(@payload)
+    ["/add_shipment", "/update_shipment"].each do |path|
+      post path do
+        handle_shipment @payload
+      end
     end
   end
 end
