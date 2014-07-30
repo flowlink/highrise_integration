@@ -12,10 +12,10 @@ module HighriseEndpoint
     endpoint_key ENV["ENDPOINT_KEY"]
     set :logging, true
 
-    # Sets the Highrise credentials based on what is provided
-    def set_highrise_configs(payload)
-      Highrise::Base.site = payload[:parameters]["highrise.site_url"]
-      Highrise::Base.user = payload[:parameters]["highrise.api_token"]
+    before do
+      # Sets the Highrise credentials based on what is provided
+      Highrise::Base.site = @config["highrise_site_url"]
+      Highrise::Base.user = @config["highrise_api_token"]
     end
 
     def line_items_to_string(line_items)
@@ -25,8 +25,6 @@ module HighriseEndpoint
     end
 
     def add_customer(payload)
-      set_highrise_configs(payload)
-
       people = Highrise::Person.search(customer_id: payload[:customer][:id])
 
       tags = if @payload[:customer][:highrise_tags] && @payload[:customer][:highrise_tags][:person]
@@ -98,8 +96,6 @@ module HighriseEndpoint
     alias_method :update_customer, :add_customer
 
     def add_order(payload)
-      set_highrise_configs(payload)
-
       deals = Highrise::Deal.all
       deals = deals.map{ |deal|
          deal if deal.name == "Order ##{payload[:order][:id]}"
@@ -204,8 +200,6 @@ module HighriseEndpoint
     alias_method :update_order, :add_order
 
     def add_shipment(payload)
-      set_highrise_configs(payload)
-
       @shipment = payload[:shipment]
 
       deals = Highrise::Deal.all

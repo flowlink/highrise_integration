@@ -37,8 +37,8 @@ Highrise::Base.user = ENV["HIGHRISE_API_TOKEN"]
 
 # This is used to override the generated request parameters, so that they are real values.
 def set_highrise_parameters(request)
-  request[:parameters]["highrise.api_token"] = ENV["HIGHRISE_API_TOKEN"]
-  request[:parameters]["highrise.site_url"] = ENV["HIGHRISE_SITE_URL"]
+  request[:parameters]["highrise_api_token"] = ENV["HIGHRISE_API_TOKEN"]
+  request[:parameters]["highrise_site_url"] = ENV["HIGHRISE_SITE_URL"]
 end
 
 def line_items_to_string(line_items)
