@@ -47,10 +47,28 @@ module HighriseEndpoint
 
     # Only return the part of the hash that has changed attributes
     def build
-      if @person
+      result = if @person
         attributes - @person
       else
         attributes
+      end
+
+      normalize result
+      result
+    end
+
+    def normalize(attributes)
+      contact_data = attributes[:contact_data]
+      if contact_data[:email_addresses]
+        contact_data[:email_addresses].each { |h| h[:location] = 'Work' }
+      end
+
+      if contact_data[:addresses]
+        contact_data[:addresses].each { |h| h[:location] = 'Work' }
+      end
+
+      if contact_data[:phone_numbers]
+        contact_data[:phone_numbers].each { |h| h[:location] = 'Work' }
       end
     end
   end
