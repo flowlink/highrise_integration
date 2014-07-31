@@ -2,528 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/deals.xml
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/xml
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Date:
-      - Thu, 31 Jul 2014 20:02:28 GMT
-      Content-Type:
-      - application/xml; charset=utf-8
-      Content-Length:
-      - '1972'
-      Connection:
-      - Keep-Alive
-      Status:
-      - 200 OK
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Throttle-Count:
-      - '4'
-      Cache-Control:
-      - private, max-age=0, must-revalidate
-      X-Throttle-Max:
-      - '500'
-      Set-Cookie:
-      - _sunrise_session=BAh7BjoPc2Vzc2lvbl9pZCIlYTA2NmVjYTkwNzEzMjVmNDcwNGYzNjg1ZTExYzBjMTU%3D--550c21f7ecb7624a11d7614fefa194ae9fca2392;
-        path=/; HttpOnly; secure
-      X-Throttle-Horizon:
-      - '2014-07-31T20:02:30Z'
-      X-Runtime:
-      - '239'
-      Etag:
-      - '"66327476ef266c8a5b3f2636951e11e3"'
-      X-Request-Id:
-      - 29c982d9be15e664d1c12f971422f15e
-      Strict-Transport-Security:
-      - max-age=31536000
-      Timing-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <deals type="array">
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-31T13:11:11Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3828373</id>
-            <name>Order #123</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer">213178697</party-id>
-            <price type="integer">220</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-31T13:11:11Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <party>
-              <author-id type="integer">1055169</author-id>
-              <background nil="true"></background>
-              <company-id type="integer" nil="true"></company-id>
-              <created-at type="datetime">2014-07-31T03:53:39Z</created-at>
-              <first-name>B</first-name>
-              <group-id type="integer" nil="true"></group-id>
-              <id type="integer">213178697</id>
-              <last-name>Smith</last-name>
-              <owner-id type="integer" nil="true"></owner-id>
-              <title nil="true"></title>
-              <type>Person</type>
-              <updated-at type="datetime">2014-07-31T03:54:14Z</updated-at>
-              <visible-to>Everyone</visible-to>
-              <company-name nil="true"></company-name>
-              <linkedin-url nil="true"></linkedin-url>
-              <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
-        <contact-data>
-          <email-addresses type="array">
-            <email-address>
-              <address>spree@example.com</address>
-              <id type="integer">109480302</id>
-              <location>Work</location>
-            </email-address>
-          </email-addresses>
-          <instant-messengers type="array"/>
-          <twitter-accounts type="array"/>
-          <phone-numbers type="array">
-            <phone-number>
-              <id type="integer">171655355</id>
-              <location>Work</location>
-              <number>0000000000</number>
-            </phone-number>
-            <phone-number>
-              <id type="integer">171655359</id>
-              <location>Work</location>
-              <number>33-33-3333</number>
-            </phone-number>
-          </phone-numbers>
-          <addresses type="array">
-            <address>
-              <city>Hollywood</city>
-              <country>US</country>
-              <id type="integer">102007687</id>
-              <location>Work</location>
-              <state>California</state>
-              <street>1234 Awesome Street</street>
-              <zip>90210</zip>
-            </address>
-          </addresses>
-          <web-addresses type="array"/>
-        </contact-data>
-        <subject_datas type="array">
-          <subject_data>
-            <id type="integer">131227426</id>
-            <subject_field_id type="integer">912651</subject_field_id>
-            <subject_field_label>Customer ID</subject_field_label>
-            <value>a123807036</value>
-          </subject_data>
-        </subject_datas>
-            </party>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-31T04:56:04Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3827779</id>
-            <name>Order #R154085346129037</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer">213178697</party-id>
-            <price type="integer">220</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-31T04:56:04Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <party>
-              <author-id type="integer">1055169</author-id>
-              <background nil="true"></background>
-              <company-id type="integer" nil="true"></company-id>
-              <created-at type="datetime">2014-07-31T03:53:39Z</created-at>
-              <first-name>B</first-name>
-              <group-id type="integer" nil="true"></group-id>
-              <id type="integer">213178697</id>
-              <last-name>Smith</last-name>
-              <owner-id type="integer" nil="true"></owner-id>
-              <title nil="true"></title>
-              <type>Person</type>
-              <updated-at type="datetime">2014-07-31T03:54:14Z</updated-at>
-              <visible-to>Everyone</visible-to>
-              <company-name nil="true"></company-name>
-              <linkedin-url nil="true"></linkedin-url>
-              <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
-        <contact-data>
-          <email-addresses type="array">
-            <email-address>
-              <address>spree@example.com</address>
-              <id type="integer">109480302</id>
-              <location>Work</location>
-            </email-address>
-          </email-addresses>
-          <instant-messengers type="array"/>
-          <twitter-accounts type="array"/>
-          <phone-numbers type="array">
-            <phone-number>
-              <id type="integer">171655355</id>
-              <location>Work</location>
-              <number>0000000000</number>
-            </phone-number>
-            <phone-number>
-              <id type="integer">171655359</id>
-              <location>Work</location>
-              <number>33-33-3333</number>
-            </phone-number>
-          </phone-numbers>
-          <addresses type="array">
-            <address>
-              <city>Hollywood</city>
-              <country>US</country>
-              <id type="integer">102007687</id>
-              <location>Work</location>
-              <state>California</state>
-              <street>1234 Awesome Street</street>
-              <zip>90210</zip>
-            </address>
-          </addresses>
-          <web-addresses type="array"/>
-        </contact-data>
-        <subject_datas type="array">
-          <subject_data>
-            <id type="integer">131227426</id>
-            <subject_field_id type="integer">912651</subject_field_id>
-            <subject_field_label>Customer ID</subject_field_label>
-            <value>a123807036</value>
-          </subject_data>
-        </subject_datas>
-            </party>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-31T04:57:29Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3827781</id>
-            <name>Order #R15408534627839</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer">213178697</party-id>
-            <price type="integer">220</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-31T04:57:52Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <party>
-              <author-id type="integer">1055169</author-id>
-              <background nil="true"></background>
-              <company-id type="integer" nil="true"></company-id>
-              <created-at type="datetime">2014-07-31T03:53:39Z</created-at>
-              <first-name>B</first-name>
-              <group-id type="integer" nil="true"></group-id>
-              <id type="integer">213178697</id>
-              <last-name>Smith</last-name>
-              <owner-id type="integer" nil="true"></owner-id>
-              <title nil="true"></title>
-              <type>Person</type>
-              <updated-at type="datetime">2014-07-31T03:54:14Z</updated-at>
-              <visible-to>Everyone</visible-to>
-              <company-name nil="true"></company-name>
-              <linkedin-url nil="true"></linkedin-url>
-              <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
-        <contact-data>
-          <email-addresses type="array">
-            <email-address>
-              <address>spree@example.com</address>
-              <id type="integer">109480302</id>
-              <location>Work</location>
-            </email-address>
-          </email-addresses>
-          <instant-messengers type="array"/>
-          <twitter-accounts type="array"/>
-          <phone-numbers type="array">
-            <phone-number>
-              <id type="integer">171655355</id>
-              <location>Work</location>
-              <number>0000000000</number>
-            </phone-number>
-            <phone-number>
-              <id type="integer">171655359</id>
-              <location>Work</location>
-              <number>33-33-3333</number>
-            </phone-number>
-          </phone-numbers>
-          <addresses type="array">
-            <address>
-              <city>Hollywood</city>
-              <country>US</country>
-              <id type="integer">102007687</id>
-              <location>Work</location>
-              <state>California</state>
-              <street>1234 Awesome Street</street>
-              <zip>90210</zip>
-            </address>
-          </addresses>
-          <web-addresses type="array"/>
-        </contact-data>
-        <subject_datas type="array">
-          <subject_data>
-            <id type="integer">131227426</id>
-            <subject_field_id type="integer">912651</subject_field_id>
-            <subject_field_label>Customer ID</subject_field_label>
-            <value>a123807036</value>
-          </subject_data>
-        </subject_datas>
-            </party>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-30T03:24:59Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3825304</id>
-            <name>Order #R154085346312479</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer" nil="true"></party-id>
-            <price type="integer">2</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-30T03:24:59Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-31T03:57:25Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3827694</id>
-            <name>Order #R154085346352694</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer">213178697</party-id>
-            <price type="integer">220</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-31T04:38:02Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <party>
-              <author-id type="integer">1055169</author-id>
-              <background nil="true"></background>
-              <company-id type="integer" nil="true"></company-id>
-              <created-at type="datetime">2014-07-31T03:53:39Z</created-at>
-              <first-name>B</first-name>
-              <group-id type="integer" nil="true"></group-id>
-              <id type="integer">213178697</id>
-              <last-name>Smith</last-name>
-              <owner-id type="integer" nil="true"></owner-id>
-              <title nil="true"></title>
-              <type>Person</type>
-              <updated-at type="datetime">2014-07-31T03:54:14Z</updated-at>
-              <visible-to>Everyone</visible-to>
-              <company-name nil="true"></company-name>
-              <linkedin-url nil="true"></linkedin-url>
-              <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
-        <contact-data>
-          <email-addresses type="array">
-            <email-address>
-              <address>spree@example.com</address>
-              <id type="integer">109480302</id>
-              <location>Work</location>
-            </email-address>
-          </email-addresses>
-          <instant-messengers type="array"/>
-          <twitter-accounts type="array"/>
-          <phone-numbers type="array">
-            <phone-number>
-              <id type="integer">171655355</id>
-              <location>Work</location>
-              <number>0000000000</number>
-            </phone-number>
-            <phone-number>
-              <id type="integer">171655359</id>
-              <location>Work</location>
-              <number>33-33-3333</number>
-            </phone-number>
-          </phone-numbers>
-          <addresses type="array">
-            <address>
-              <city>Hollywood</city>
-              <country>US</country>
-              <id type="integer">102007687</id>
-              <location>Work</location>
-              <state>California</state>
-              <street>1234 Awesome Street</street>
-              <zip>90210</zip>
-            </address>
-          </addresses>
-          <web-addresses type="array"/>
-        </contact-data>
-        <subject_datas type="array">
-          <subject_data>
-            <id type="integer">131227426</id>
-            <subject_field_id type="integer">912651</subject_field_id>
-            <subject_field_label>Customer ID</subject_field_label>
-            <value>a123807036</value>
-          </subject_data>
-        </subject_datas>
-            </party>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-31T17:41:34Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3829167</id>
-            <name>Order #R15408534651831</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer">213225487</party-id>
-            <price type="integer">220</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-31T17:41:42Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <party>
-              <author-id type="integer">1055169</author-id>
-              <background nil="true"></background>
-              <company-id type="integer" nil="true"></company-id>
-              <created-at type="datetime">2014-07-31T17:39:58Z</created-at>
-              <first-name>Spree</first-name>
-              <group-id type="integer" nil="true"></group-id>
-              <id type="integer">213225487</id>
-              <last-name>Thursday</last-name>
-              <owner-id type="integer" nil="true"></owner-id>
-              <title nil="true"></title>
-              <type>Person</type>
-              <updated-at type="datetime">2014-07-31T17:40:39Z</updated-at>
-              <visible-to>Everyone</visible-to>
-              <company-name nil="true"></company-name>
-              <linkedin-url nil="true"></linkedin-url>
-              <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
-        <contact-data>
-          <email-addresses type="array">
-            <email-address>
-              <address>thursday@spree.com</address>
-              <id type="integer">109513486</id>
-              <location>Work</location>
-            </email-address>
-          </email-addresses>
-          <instant-messengers type="array"/>
-          <twitter-accounts type="array"/>
-          <phone-numbers type="array">
-            <phone-number>
-              <id type="integer">171689371</id>
-              <location>Work</location>
-              <number>0000000000</number>
-            </phone-number>
-            <phone-number>
-              <id type="integer">171689394</id>
-              <location>Work</location>
-              <number>33-33-3333</number>
-            </phone-number>
-          </phone-numbers>
-          <addresses type="array">
-            <address>
-              <city>Hollywood</city>
-              <country>US</country>
-              <id type="integer">102028915</id>
-              <location>Work</location>
-              <state>California</state>
-              <street>1234 Awesome Street</street>
-              <zip>90210</zip>
-            </address>
-          </addresses>
-          <web-addresses type="array"/>
-        </contact-data>
-        <subject_datas type="array">
-          <subject_data>
-            <id type="integer">131295558</id>
-            <subject_field_id type="integer">912651</subject_field_id>
-            <subject_field_label>Customer ID</subject_field_label>
-            <value>a123997673</value>
-          </subject_data>
-        </subject_datas>
-            </party>
-            <parties type="array"/>
-          </deal>
-          <deal>
-            <account-id type="integer">321218</account-id>
-            <author-id type="integer">1055169</author-id>
-            <background nil="true"></background>
-            <category-id type="integer" nil="true"></category-id>
-            <created-at type="datetime">2014-07-30T02:09:57Z</created-at>
-            <currency>USD</currency>
-            <duration type="integer">1</duration>
-            <group-id type="integer" nil="true"></group-id>
-            <id type="integer">3825273</id>
-            <name>Order #R154085346852</name>
-            <owner-id type="integer" nil="true"></owner-id>
-            <party-id type="integer" nil="true"></party-id>
-            <price type="integer">2</price>
-            <price-type>fixed</price-type>
-            <responsible-party-id type="integer" nil="true"></responsible-party-id>
-            <status>won</status>
-            <status-changed-on type="date" nil="true"></status-changed-on>
-            <updated-at type="datetime">2014-07-30T02:09:57Z</updated-at>
-            <visible-to>Everyone</visible-to>
-            <parties type="array"/>
-          </deal>
-        </deals>
-    http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:29 GMT
-- request:
-    method: get
     uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/people/search.xml?criteria%5Baddress1%5D=1234%20Awesome%20Street&criteria%5Baddress2%5D=&criteria%5Bcity%5D=Hollywood&criteria%5Bcountry%5D=US&criteria%5Bfirstname%5D=Joe&criteria%5Blastname%5D=Smith&criteria%5Bphone%5D=0000000000&criteria%5Bstate%5D=California&criteria%5Bzipcode%5D=90210&n=0
     body:
       encoding: US-ASCII
@@ -543,7 +21,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 31 Jul 2014 20:02:29 GMT
+      - Thu, 31 Jul 2014 21:01:02 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -553,13 +31,13 @@ http_interactions:
       Status:
       - 200 OK
       X-Runtime:
-      - '52'
+      - '41'
       Cache-Control:
       - private, max-age=0, must-revalidate
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 99bd21a00ec3d717f03941a421402e58
+      - 80abac7a5f922e71acd7ca80b110567c
       X-Throttle-Max:
       - '500'
       Etag:
@@ -567,9 +45,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000
       X-Throttle-Count:
-      - '5'
+      - '1'
       X-Throttle-Horizon:
-      - '2014-07-31T20:02:30Z'
+      - '2014-07-31T21:01:10Z'
       Timing-Allow-Origin:
       - "*"
       Vary:
@@ -701,7 +179,7 @@ http_interactions:
           </person>
         </people>
     http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:30 GMT
+  recorded_at: Thu, 31 Jul 2014 21:01:03 GMT
 - request:
     method: get
     uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/people/search.xml?criteria%5Baddress1%5D=1234%20Awesome%20Street&criteria%5Baddress2%5D=&criteria%5Bcity%5D=Hollywood&criteria%5Bcountry%5D=US&criteria%5Bfirstname%5D=Joe&criteria%5Blastname%5D=Smith&criteria%5Bphone%5D=0000000000&criteria%5Bstate%5D=California&criteria%5Bzipcode%5D=90210&n=2
@@ -723,7 +201,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 31 Jul 2014 20:02:30 GMT
+      - Thu, 31 Jul 2014 21:01:03 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -732,24 +210,24 @@ http_interactions:
       - keep-alive
       Status:
       - 200 OK
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Throttle-Count:
-      - '1'
+      X-Runtime:
+      - '13'
       Cache-Control:
       - private, max-age=0, must-revalidate
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 5036f5e6392cc5d68b515d6b6f2c90f1
       X-Throttle-Max:
       - '500'
-      X-Throttle-Horizon:
-      - '2014-07-31T20:02:40Z'
-      X-Runtime:
-      - '11'
       Etag:
       - '"304246700dd9732895ecf4e138caeb37"'
-      X-Request-Id:
-      - 41b447004f7044ed79318d33252b98e1
       Strict-Transport-Security:
       - max-age=31536000
+      X-Throttle-Count:
+      - '2'
+      X-Throttle-Horizon:
+      - '2014-07-31T21:01:10Z'
       Timing-Allow-Origin:
       - "*"
     body:
@@ -758,7 +236,7 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <people type="array"/>
     http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:31 GMT
+  recorded_at: Thu, 31 Jul 2014 21:01:04 GMT
 - request:
     method: get
     uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/people/search.xml?criteria%5Bemail%5D=spree@example.com&n=0
@@ -780,7 +258,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 31 Jul 2014 20:02:30 GMT
+      - Thu, 31 Jul 2014 21:01:04 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -789,24 +267,24 @@ http_interactions:
       - Keep-Alive
       Status:
       - 200 OK
-      X-Runtime:
-      - '28'
-      Cache-Control:
-      - private, max-age=0, must-revalidate
       X-Frame-Options:
       - SAMEORIGIN
-      X-Request-Id:
-      - 82054d1eea79ddbaed316e1e5b2bb457
+      X-Throttle-Count:
+      - '3'
+      Cache-Control:
+      - private, max-age=0, must-revalidate
       X-Throttle-Max:
       - '500'
+      X-Throttle-Horizon:
+      - '2014-07-31T21:01:10Z'
+      X-Runtime:
+      - '32'
       Etag:
       - '"f5b01405d6d72997ad293e7331332969"'
+      X-Request-Id:
+      - cd8d792e295aa1749b7ef39284204ea2
       Strict-Transport-Security:
       - max-age=31536000
-      X-Throttle-Count:
-      - '2'
-      X-Throttle-Horizon:
-      - '2014-07-31T20:02:40Z'
       Timing-Allow-Origin:
       - "*"
       Vary:
@@ -878,7 +356,7 @@ http_interactions:
           </person>
         </people>
     http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:31 GMT
+  recorded_at: Thu, 31 Jul 2014 21:01:05 GMT
 - request:
     method: get
     uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/people/search.xml?criteria%5Bemail%5D=spree@example.com&n=1
@@ -900,7 +378,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 31 Jul 2014 20:02:31 GMT
+      - Thu, 31 Jul 2014 21:01:05 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -910,13 +388,13 @@ http_interactions:
       Status:
       - 200 OK
       X-Runtime:
-      - '11'
+      - '10'
       Cache-Control:
       - private, max-age=0, must-revalidate
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 93ad0b5f8baa914fc3760b03662a3e48
+      - f13d745ab938f07c113d19828f69815c
       X-Throttle-Max:
       - '500'
       Etag:
@@ -924,9 +402,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000
       X-Throttle-Count:
-      - '3'
+      - '4'
       X-Throttle-Horizon:
-      - '2014-07-31T20:02:40Z'
+      - '2014-07-31T21:01:10Z'
       Timing-Allow-Origin:
       - "*"
     body:
@@ -935,34 +413,20 @@ http_interactions:
         <?xml version="1.0" encoding="UTF-8"?>
         <people type="array"/>
     http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:32 GMT
+  recorded_at: Thu, 31 Jul 2014 21:01:07 GMT
 - request:
-    method: put
-    uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/deals/3828373.xml
+    method: post
+    uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/deals.xml
     body:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
         <deal>
-          <account-id type="integer">321218</account-id>
-          <author-id type="integer">1055169</author-id>
-          <background nil="true"/>
-          <category-id nil="true"/>
-          <created-at type="dateTime">2014-07-31T13:11:11Z</created-at>
           <currency>USD</currency>
-          <duration type="integer">1</duration>
-          <group-id nil="true"/>
-          <id type="integer">3828373</id>
-          <name>Order #123</name>
-          <owner-id nil="true"/>
-          <party-id type="integer">213178697</party-id>
+          <name>Order #R154085346129037</name>
           <price type="integer">220</price>
-          <price-type>fixed</price-type>
-          <responsible-party-id nil="true"/>
           <status>won</status>
-          <status-changed-on nil="true"/>
-          <updated-at type="dateTime">2014-07-31T13:11:11Z</updated-at>
-          <visible-to>Everyone</visible-to>
+          <party-id type="integer">213178697</party-id>
         </deal>
     headers:
       Content-Type:
@@ -975,42 +439,211 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Server:
       - nginx
       Date:
-      - Thu, 31 Jul 2014 20:02:32 GMT
+      - Thu, 31 Jul 2014 21:01:07 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
-      - '1'
+      - '1096'
+      Connection:
+      - Keep-Alive
+      Status:
+      - 201 Created
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Throttle-Count:
+      - '5'
+      Cache-Control:
+      - no-cache
+      X-Throttle-Max:
+      - '500'
+      Set-Cookie:
+      - last_deal_currency=USD; path=/; secure
+      X-Throttle-Horizon:
+      - '2014-07-31T21:01:10Z'
+      Location:
+      - https://HIGHRISE_SITE_HOST/deals/3829703
+      X-Runtime:
+      - '38'
+      X-Request-Id:
+      - 2eae15f7f72b2b3e87a7b6d5cbb0bb8c
+      Strict-Transport-Security:
+      - max-age=31536000
+      Timing-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <deal>
+          <account-id type="integer">321218</account-id>
+          <author-id type="integer">1055169</author-id>
+          <background nil="true"></background>
+          <category-id type="integer" nil="true"></category-id>
+          <created-at type="datetime">2014-07-31T21:01:07Z</created-at>
+          <currency>USD</currency>
+          <duration type="integer">1</duration>
+          <group-id type="integer" nil="true"></group-id>
+          <id type="integer">3829703</id>
+          <name>Order #R154085346129037</name>
+          <owner-id type="integer" nil="true"></owner-id>
+          <party-id type="integer">213178697</party-id>
+          <price type="integer">220</price>
+          <price-type>fixed</price-type>
+          <responsible-party-id type="integer" nil="true"></responsible-party-id>
+          <status>won</status>
+          <status-changed-on type="date" nil="true"></status-changed-on>
+          <updated-at type="datetime">2014-07-31T21:01:07Z</updated-at>
+          <visible-to>Everyone</visible-to>
+          <party>
+            <author-id type="integer">1055169</author-id>
+            <background nil="true"></background>
+            <company-id type="integer" nil="true"></company-id>
+            <created-at type="datetime">2014-07-31T03:53:39Z</created-at>
+            <first-name>B</first-name>
+            <group-id type="integer" nil="true"></group-id>
+            <id type="integer">213178697</id>
+            <last-name>Smith</last-name>
+            <owner-id type="integer" nil="true"></owner-id>
+            <title nil="true"></title>
+            <type>Person</type>
+            <updated-at type="datetime">2014-07-31T03:54:14Z</updated-at>
+            <visible-to>Everyone</visible-to>
+            <company-name nil="true"></company-name>
+            <linkedin-url nil="true"></linkedin-url>
+            <avatar-url>http://dge9rmgqjs8m1.cloudfront.net/highrise/missing/avatar.gif?r=3</avatar-url>
+        <contact-data>
+          <email-addresses type="array">
+            <email-address>
+              <address>spree@example.com</address>
+              <id type="integer">109480302</id>
+              <location>Work</location>
+            </email-address>
+          </email-addresses>
+          <instant-messengers type="array"/>
+          <twitter-accounts type="array"/>
+          <phone-numbers type="array">
+            <phone-number>
+              <id type="integer">171655355</id>
+              <location>Work</location>
+              <number>0000000000</number>
+            </phone-number>
+            <phone-number>
+              <id type="integer">171655359</id>
+              <location>Work</location>
+              <number>33-33-3333</number>
+            </phone-number>
+          </phone-numbers>
+          <addresses type="array">
+            <address>
+              <city>Hollywood</city>
+              <country>US</country>
+              <id type="integer">102007687</id>
+              <location>Work</location>
+              <state>California</state>
+              <street>1234 Awesome Street</street>
+              <zip>90210</zip>
+            </address>
+          </addresses>
+          <web-addresses type="array"/>
+        </contact-data>
+        <subject_datas type="array">
+          <subject_data>
+            <id type="integer">131227426</id>
+            <subject_field_id type="integer">912651</subject_field_id>
+            <subject_field_label>Customer ID</subject_field_label>
+            <value>a123807036</value>
+          </subject_data>
+        </subject_datas>
+          </party>
+          <parties type="array"/>
+        </deal>
+    http_version: 
+  recorded_at: Thu, 31 Jul 2014 21:01:08 GMT
+- request:
+    method: post
+    uri: https://HIGHRISE_API_TOKEN:@HIGHRISE_SITE_HOST/notes.xml
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <note>
+          <body>#SPREE-T-SHIRT - "Spree T-Shirt" | 2 @ 100/each</body>
+          <subject-id type="integer">3829703</subject-id>
+          <subject-type>Deal</subject-type>
+        </note>
+    headers:
+      Content-Type:
+      - application/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 31 Jul 2014 21:01:09 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Content-Length:
+      - '714'
       Connection:
       - keep-alive
       Status:
-      - 200 OK
+      - 201 Created
       X-Runtime:
-      - '15'
+      - '27'
       Cache-Control:
       - no-cache
+      Location:
+      - https://HIGHRISE_SITE_HOST/notes/238907790
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 791e7c2b5295d1240f10d460f2e3ea2c
+      - f69747dc02ad9b3253792324344ba722
       X-Throttle-Max:
       - '500'
       Strict-Transport-Security:
       - max-age=31536000
       X-Throttle-Count:
-      - '4'
+      - '6'
       X-Throttle-Horizon:
-      - '2014-07-31T20:02:40Z'
+      - '2014-07-31T21:01:10Z'
       Timing-Allow-Origin:
       - "*"
     body:
       encoding: UTF-8
-      string: " "
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <note>
+          <author-id type="integer">1055169</author-id>
+          <collection-id type="integer">3829703</collection-id>
+          <collection-type>Deal</collection-type>
+          <created-at type="datetime">2014-07-31T21:01:09Z</created-at>
+          <group-id type="integer" nil="true"></group-id>
+          <id type="integer">238907790</id>
+          <owner-id type="integer" nil="true"></owner-id>
+          <subject-id type="integer">3829703</subject-id>
+          <subject-type>Deal</subject-type>
+          <updated-at type="datetime">2014-07-31T21:01:09Z</updated-at>
+          <visible-to>Everyone</visible-to>
+          <body>#SPREE-T-SHIRT - &quot;Spree T-Shirt&quot; | 2 @ 100/each</body>
+          <subject-name>Order #R154085346129037</subject-name>
+        </note>
     http_version: 
-  recorded_at: Thu, 31 Jul 2014 20:02:33 GMT
+  recorded_at: Thu, 31 Jul 2014 21:01:10 GMT
 recorded_with: VCR 2.9.2

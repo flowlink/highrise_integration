@@ -8,3 +8,10 @@ shared_examples "config hash" do
     }.with_indifferent_access
   end
 end
+
+shared_examples "connect params" do
+  before do
+    Highrise::Base.site = ENV["HIGHRISE_SITE_URL"]
+    Highrise::Base.user = ENV["HIGHRISE_API_TOKEN"]
+  end
+end

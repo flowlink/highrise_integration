@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe HighriseEndpoint::Application do
-  describe "| POST -> '/update_order'" do
+  pending "| POST -> '/update_order'" do
     context "with an existing order" do
       before(:each) do
         VCR.use_cassette(:update_existing_deal) do

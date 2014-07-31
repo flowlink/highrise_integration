@@ -94,10 +94,7 @@ module HighriseEndpoint
     end
 
     def handle_order(payload)
-      deals = Highrise::Deal.all
-      deals = deals.map{ |deal|
-         deal if deal.name == "Order ##{payload[:order][:id]}"
-      }.compact
+      @order = HighriseIntegration::Order.new(@payload)
 
       person = Highrise::Person.search(payload[:order][:billing_address]).first
 
@@ -119,15 +116,10 @@ module HighriseEndpoint
         []
       end
 
-      if deals.length > 0
-        @deal = deals.first
+      if @order.current_deal?
+        @deal = @order.current_deal
         structure = HighriseEndpoint::DealBlueprint.new(payload: payload, deal: JSON.parse(@deal.to_json)).build
-
-        if @deal.name == "Order ##{payload[:order][:id]}"
-          @deal.load(structure)
-        else
-          @deal = Highrise::Deal.new(structure)
-        end
+        @deal.load(structure)
 
         if @deal.save
           person_tags.each do |person_tag|
