@@ -1,11 +1,9 @@
 {
-  "id": "12233434",
-  "firstname": "Luis",
-  "lastname": "B",
-  "email": "luis@gmail.com",
-  "billing_address": {
-    "firstname": "Joe",
-    "lastname": "Smith",
+  "id": "a123445",
+  "firstname": "Crazy",
+  "lastname": "Eyes",
+  "email": "crazt@eyes.com",
+  "shipping_address": {
     "address1": "1234 Awesome Street",
     "address2": "",
     "zipcode": "90210",
@@ -13,5 +11,14 @@
     "state": "California",
     "country": "US",
     "phone": "0000000000"
+  },
+  "billing_address": {
+    "address1": "Bethesda Building",
+    "address2": "",
+    "zipcode": "90210",
+    "city": "Hollywood",
+    "state": "California",
+    "country": "US",
+    "phone": "3333-3333"
   }
 }
