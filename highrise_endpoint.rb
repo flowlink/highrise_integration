@@ -17,12 +17,6 @@ module HighriseEndpoint
       end
     end
 
-    def line_items_to_string(line_items)
-      line_items.map{ |line_item|
-        "##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]}/each"
-      }.join("\n")
-    end
-
     def handle_customer(payload)
       people = Highrise::Person.search(customer_id: payload[:customer][:id])
 
@@ -179,7 +173,7 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          @note = Highrise::Note.create(body: line_items_to_string(payload[:order][:line_items]), subject_id: @deal.id, subject_type: "Deal")
+          @note = Highrise::Note.create(body: @order.line_items_note, subject_id: @deal.id, subject_type: "Deal")
 
           add_object "order", { id: @payload[:order][:id], highrise_id: @deal.id }
           result 200, "Deal was added to Highrise."
