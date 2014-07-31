@@ -1,8 +1,6 @@
 language: ruby
 rvm:
   - 2.1.1
-script: bundle exec rake test
+script: bundle exec rspec spec
 notifications:
   email: false
-env:
-  - HIGHRISE_API_TOKEN=793caf24167e9d6da07515f3e36f864b HIGHRISE_SITE_URL=https://codelationtesting.highrisehq.com
