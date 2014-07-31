@@ -17,13 +17,20 @@ describe HighriseEndpoint::Application do
   end
 
   context "orders" do
-    let(:payload) do
-      config.merge({ order: Factories.order_payload })
+    it "updates a Deal record" do
+      payload = config.merge({ order: Factories.order_payload })
+
+      VCR.use_cassette("/order/update") do
+        post "update_order", payload.to_json, auth
+        expect(last_response.status).to eq 200
+      end
     end
 
     it "updates a Deal record" do
-      VCR.use_cassette("/order/update") do
-        post "update_order", payload.to_json, auth
+      payload = config.merge({ order: Factories.add_order_payload })
+
+      VCR.use_cassette("/order/create") do
+        post "add_order", payload.to_json, auth
         expect(last_response.status).to eq 200
       end
     end
