@@ -2,13 +2,18 @@ require "rubygems"
 require "bundler"
 
 Bundler.require(:default, :test)
-Dotenv.load
 
 require File.join(File.dirname(__FILE__), '..', "highrise_endpoint")
+
 Dir["./spec/support/**/*.rb"].each { |f| require f }
+
 require "./lib/blueprint"
+
 Dir["./lib/**/*.rb"].each { |f| require f }
+
 require "spree/testing_support/controllers"
+
+Sinatra::Base.environment = 'test'
 
 def app
   HighriseEndpoint::Application

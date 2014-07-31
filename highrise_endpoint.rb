@@ -1,6 +1,5 @@
 Bundler.require(:default)
 require "endpoint_base/sinatra"
-Dotenv.load
 
 module HighriseEndpoint
   class Application < EndpointBase::Sinatra::Base
@@ -189,6 +188,7 @@ module HighriseEndpoint
 
           @note = Highrise::Note.create(body: line_items_to_string(payload[:order][:line_items]), subject_id: @deal.id, subject_type: "Deal")
 
+          add_object "order", { id: @payload[:order][:id], highrise_id: @deal.id }
           result 200, "Deal was added to Highrise."
         else
           result 500, @deal.errors[:base].join("; ")

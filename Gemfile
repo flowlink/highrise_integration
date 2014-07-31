@@ -1,24 +1,26 @@
 source "https://www.rubygems.org"
 
-gem "awesome_print"
-gem "dotenv"
-gem "endpoint_base", github: "spree/endpoint_base"
-gem "foreman"
-gem "highrise"
-gem "pry"
-gem "puma"
-gem "rake"
 gem "sinatra"
 gem "tilt", "~> 1.4.1"
 gem "tilt-jbuilder", require: "sinatra/jbuilder"
 
+gem "endpoint_base", github: "spree/endpoint_base"
+gem 'capistrano'
+
+gem 'honeybadger'
+
+gem "highrise"
+
 group :test do
+  gem "pry"
   gem "faker"
-  gem "guard"
-  gem "guard-rspec"
-  gem "rack-test"
-  gem "rspec"
-  gem "terminal-notifier-guard"
-  gem "vcr"
-  gem "webmock"
+  gem 'vcr'
+  gem 'rspec'
+  gem 'rack-test'
+  gem 'webmock'
+end
+
+group :production do
+  gem 'foreman'
+  gem 'unicorn'
 end
