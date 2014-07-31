@@ -19,7 +19,7 @@ module HighriseEndpoint
 
     def line_items_to_string(line_items)
       line_items.map{ |line_item|
-        "##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]/100.00}/each"
+        "##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]}/each"
       }.join("\n")
     end
 

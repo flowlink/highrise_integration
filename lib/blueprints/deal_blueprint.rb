@@ -25,7 +25,7 @@ module HighriseEndpoint
       {
         currency: order[:currency],
         name:     "Order ##{order[:id]}",
-        price:    order[:totals][:order]/100.00,
+        price:    order[:totals][:order],
         status:   "won",
         party_id: person ? person.id : nil
       }.with_indifferent_access
