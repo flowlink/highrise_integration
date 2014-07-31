@@ -15,18 +15,19 @@ require "spree/testing_support/controllers"
 
 Sinatra::Base.environment = 'test'
 
-def app
-  HighriseEndpoint::Application
-end
+ENV["HIGHRISE_SITE_URL"] ||= "http://www.example.com"
+ENV["HIGHRISE_API_TOKEN"] ||= "thisIsAFakeKey123"
 
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.default_cassette_options = { match_requests_on: [:method, :path] }
   config.hook_into :webmock
+
   config.filter_sensitive_data("HIGHRISE_SITE_HOST") {
     URI(ENV["HIGHRISE_SITE_URL"].blank? ? "http://www.example.com" : ENV["HIGHRISE_SITE_URL"]).host
   }
+
   config.filter_sensitive_data("HIGHRISE_API_TOKEN") {
     ENV["HIGHRISE_API_TOKEN"].blank? ? "thisIsAFakeKey123" : ENV["HIGHRISE_API_TOKEN"]
   }
@@ -36,9 +37,6 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Spree::TestingSupport::Controllers
 end
-
-Highrise::Base.site = ENV["HIGHRISE_SITE_URL"]
-Highrise::Base.user = ENV["HIGHRISE_API_TOKEN"]
 
 # This is used to override the generated request parameters, so that they are real values.
 def set_highrise_parameters(request)
