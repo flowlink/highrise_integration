@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe HighriseEndpoint::Application do
-  describe "| POST -> '/update_shipment'" do
+  pending "| POST -> '/update_shipment'" do
     before(:each) do
       VCR.use_cassette(:update_shipment) do
         @new_order = HighriseEndpoint::Requests.new(:order, "for_shipment").to_hash
