@@ -8,7 +8,7 @@ describe HighriseEndpoint::Application do
           @existing_customer = HighriseEndpoint::Requests.new(:customer, "existing_update").to_hash
           set_highrise_parameters(@existing_customer)
 
-          @structure    = HighriseEndpoint::PersonBlueprint.new(payload: @existing_customer).build
+          @structure    = HighriseEndpoint::PersonBlueprint.new(@existing_customer).build
 
           Highrise::Person.new(@structure).save
 

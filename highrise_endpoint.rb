@@ -40,10 +40,10 @@ module HighriseEndpoint
 
       if people.length > 0
         @person = people.first
-        structure = HighriseEndpoint::PersonBlueprint.new(payload: payload, person: JSON.parse(@person.to_json)).build
+        attr = HighriseEndpoint::PersonBlueprint.new(payload, @person).attributes
 
         if @person.field("Customer ID") == payload[:customer][:id]
-          @person.load(structure)
+          @person.load attr
         else
           @person = Highrise::Person.new(structure)
         end
@@ -68,7 +68,7 @@ module HighriseEndpoint
           result 500, @person.errors[:base].join("; ")
         end
       else
-        structure = HighriseEndpoint::PersonBlueprint.new(payload: payload).build
+        structure = HighriseEndpoint::PersonBlueprint.new(payload).attributes
         @person = Highrise::Person.new(structure)
 
         if @person.save

@@ -1,75 +1,82 @@
 module HighriseEndpoint
   # Maps a request payload into a highrise hash structure
-  class PersonBlueprint < Blueprint
-    # A person hash structure, if provided the blueprint hash structure will only include what has changed
-    attr_accessor :person
+  class PersonBlueprint
+    attr_reader :person, :customer, :billing_address, :contact_data
 
-    def initialize(payload: nil, person: nil)
-      super(payload: payload)
-      @person = person.with_indifferent_access if person
+    def initialize(payload, person = nil)
+      @person = person
+      @customer = payload[:customer] 
+      @billing_address = customer[:billing_address] if customer
+
+      @contact_data = person.contact_data if person
+    end
+
+    def email_addresses
+      if contact_data
+        emails = contact_data.email_addresses.map(&:address)
+      end
+
+      if contact_data.nil? || (contact_data && !emails.include?(customer[:email]))
+        [{ address: customer[:email], location: 'Work' }]
+      else
+        []
+      end
+    end
+
+    def phone_numbers
+      if contact_data
+        numbers = contact_data.phone_numbers.map(&:number)
+      end
+
+      if contact_data.nil? || (contact_data && !numbers.include?(billing_address[:phone]))
+        [{ number: billing_address[:phone], location: 'Work' }]
+      else
+        []
+      end
+    end
+
+    def addresses
+      if contact_data
+        existing_address = contact_data.addresses.any? do |a|
+          a.city == billing_address[:city] &&
+          a.country == billing_address[:country] &&
+          a.state == billing_address[:state] &&
+          a.street == billing_address[:address1] &&
+          a.zip == billing_address[:zipcode]
+        end
+      end
+
+      if contact_data.nil? || !existing_address
+        [
+          {
+            city:     billing_address[:city],
+            country:  billing_address[:country],
+            location: 'Work',
+            state:    billing_address[:state],
+            street:   billing_address[:address1],
+            zip:      billing_address[:zipcode]
+          }
+        ]
+      else
+        []
+      end
     end
 
     def attributes
-      customer        = @payload[:customer]
-      billing_address = customer[:billing_address]
-
       {
         first_name: customer[:firstname],
         last_name:  customer[:lastname],
         contact_data: {
-          email_addresses: [
-            {
-              address: customer[:email],
-              location: 'Work'
-            }
-          ],
-          addresses: [
-            {
-              # Need to figure out what all of the information is to be added in the address
-              city:     billing_address[:city],
-              country:  billing_address[:country],
-              location: 'Work',
-              state:    billing_address[:state],
-              street:   billing_address[:address1],
-              zip:      billing_address[:zipcode]
-            }
-          ],
-          phone_numbers: [
-            {
-              location: 'Work',
-              number:   billing_address[:phone]
-            }
-          ],
+          email_addresses: email_addresses,
+          addresses: addresses,
+          phone_numbers: phone_numbers,
           customer_id: customer[:id]
         }
       }.with_indifferent_access
     end
 
-    # Only return the part of the hash that has changed attributes
     def build
-      result = if @person
-        attributes - @person
-      else
-        attributes
-      end
-
-      normalize result
-      result
-    end
-
-    def normalize(attributes)
-      contact_data = attributes[:contact_data]
-      if contact_data[:email_addresses]
-        contact_data[:email_addresses].each { |h| h[:location] = 'Work' }
-      end
-
-      if contact_data[:addresses]
-        contact_data[:addresses].each { |h| h[:location] = 'Work' }
-      end
-
-      if contact_data[:phone_numbers]
-        contact_data[:phone_numbers].each { |h| h[:location] = 'Work' }
-      end
+      customer ? attributes : {}
     end
   end
 end
