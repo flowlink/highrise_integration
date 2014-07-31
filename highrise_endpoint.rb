@@ -173,7 +173,8 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          @note = Highrise::Note.create(body: @order.line_items_note, subject_id: @deal.id, subject_type: "Deal")
+          Highrise::Note.create(body: "Line Items: \n\n #{@order.line_items_note}", subject_id: @deal.id, subject_type: "Deal")
+          Highrise::Note.create(body: "Adjustments: \n\n #{@order.adjustments_note}", subject_id: @deal.id, subject_type: "Deal")
 
           add_object "order", { id: @payload[:order][:id], highrise_id: @deal.id }
           result 200, "Deal was added to Highrise."

@@ -21,7 +21,13 @@ module HighriseIntegration
 
     def line_items_note
       (order[:line_items] || []).map { |line_item|
-        "##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]}/each"
+        " ##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]}/each"
+      }.join("\n")
+    end
+
+    def adjustments_note
+      (order[:adjustments] || []).map { |a|
+        " #{a[:name]} : #{a[:value]}"
       }.join("\n")
     end
   end
