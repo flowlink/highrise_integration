@@ -9,17 +9,16 @@ module Highrise
 end
 
 module HighriseEndpoint
-  class DealBlueprint < Blueprint
+  class DealBlueprint
     # A deal hash structure, if provided the blueprint hash structure will only include what has changed
-    attr_accessor :deal
+    attr_accessor :order, :deal
 
-    def initialize(payload: nil, deal: nil)
-      super(payload: payload)
-      @deal = deal.with_indifferent_access if deal
+    def initialize(payload, deal = nil)
+      @order = payload[:order]
+      @deal = deal
     end
 
     def attributes
-      order = @payload[:order]
       person = Highrise::Person.search(email: order[:email]).first
 
       {
@@ -29,15 +28,6 @@ module HighriseEndpoint
         status:   "won",
         party_id: person ? person.id : nil
       }.with_indifferent_access
-    end
-
-    # Only return the part of the hash that has changed attributes
-    def build
-      if @deal
-        attributes - @deal
-      else
-        attributes
-      end
     end
   end
 end

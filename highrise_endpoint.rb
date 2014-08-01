@@ -10,7 +10,6 @@ module HighriseEndpoint
     set :logging, true
 
     before do
-      # Sets the Highrise credentials based on what is provided
       if @config.is_a? Hash
         Highrise::Base.site = @config["highrise_site_url"]
         Highrise::Base.user = @config["highrise_api_token"]
@@ -87,12 +86,12 @@ module HighriseEndpoint
       end
     end
 
-    def handle_order(payload)
+    def handle_order
       @order = HighriseIntegration::Order.new(@payload)
 
-      person = Highrise::Person.search(payload[:order][:billing_address]).first
+      person = Highrise::Person.search(@payload[:order][:billing_address]).first
 
-      person_tags = if @payload[:order][:highrise_tags] &&  @payload[:order][:highrise_tags][:person]
+      person_tags = if @payload[:order][:highrise_tags] && @payload[:order][:highrise_tags][:person]
         @payload[:order][:highrise_tags][:person]
       else
         []
@@ -112,8 +111,7 @@ module HighriseEndpoint
 
       if @order.current_deal?
         @deal = @order.current_deal
-        structure = HighriseEndpoint::DealBlueprint.new(payload: payload, deal: JSON.parse(@deal.to_json)).build
-        @deal.load(structure)
+        @deal.load HighriseEndpoint::DealBlueprint.new(@payload, @deal).attributes
 
         if @deal.save
           person_tags.each do |person_tag|
@@ -140,13 +138,14 @@ module HighriseEndpoint
             highrise_task.save
           end
 
+          # Highrise::Note.create(body: @order.build_note, subject_id: @deal.id, subject_type: "Deal")
+
           result 200, "Deal was updated on Highrise."
         else
           result 500, @deal.errors[:base].join("; ")
         end
       else
-        structure = HighriseEndpoint::DealBlueprint.new(payload: payload).build
-        @deal = Highrise::Deal.new(structure)
+        @deal = Highrise::Deal.new HighriseEndpoint::DealBlueprint.new(@payload).attributes
 
         if @deal.save
           person_tags.each do |person_tag|
@@ -191,7 +190,7 @@ module HighriseEndpoint
 
     ["/add_order", "/update_order"].each do |path|
       post path do
-        handle_order @payload
+        handle_order
       end
     end
   end
