@@ -138,7 +138,9 @@ module HighriseEndpoint
             highrise_task.save
           end
 
-          # Highrise::Note.create(body: @order.build_note, subject_id: @deal.id, subject_type: "Deal")
+          unless (update = @order.build_update_note @deal).blank?
+            Highrise::Note.create(body: update, subject_id: @deal.id, subject_type: "Deal")
+          end
 
           result 200, "Deal was updated on Highrise."
         else

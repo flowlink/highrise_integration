@@ -25,6 +25,25 @@ module HighriseIntegration
       "Payments: \n\n #{payments_note}"
     end
 
+    def build_update_note(deal)
+      update = ""
+      note = deal.notes.last
+
+      unless note.body.include? line_items_note
+        update << "Line Items Update: \n\n #{line_items_note}\n\n"
+      end
+
+      unless note.body.include? adjustments_note
+        update << "Adjustments Update: \n\n #{adjustments_note}\n\n"
+      end
+
+      unless note.body.include? payments_note
+        update << "Payments Update: \n\n #{payments_note}\n\n"
+      end
+
+      update
+    end
+
     def line_items_note
       (order[:line_items] || []).map { |line_item|
         " ##{line_item[:product_id]} - \"#{line_item[:name]}\" | #{line_item[:quantity]} @ #{line_item[:price]}/each"

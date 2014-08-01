@@ -25,5 +25,23 @@ module HighriseIntegration
         expect(subject.current_deal).to eq nil
       end
     end
+
+    it "builds an update note" do
+      diff = "Check update #{Time.now}"
+      payload[:order][:payments][0][:payment_method] = diff
+      payload[:order][:line_items][0][:name] = diff
+      payload[:order][:adjustments][0][:name] = diff
+
+      payload[:order][:highrise_id] = "3829841"
+
+      VCR.use_cassette("order/update_existing") do
+        deal = subject.current_deal
+        update = subject.build_update_note deal
+
+        expect(update).to match /Line Items Update/i
+        expect(update).to match /Adjustments Update/i
+        expect(update).to match /Payments Update/i
+      end
+    end
   end
 end
