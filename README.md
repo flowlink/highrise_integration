@@ -1,7 +1,5 @@
 # Highrise Integration
 
-_Note: WIP_
-
 This integration is designed to integrate Wombat with the
 [Highrise](https://highrisehq.com) CRM. All transactions related to the
 storefront will be available for view in Highrise. This is a one-way
@@ -11,7 +9,7 @@ This is a fully hosted and supported integration for use with the [Wombat](http:
 product. With this integration you can perform the following functions:
 
 * Send orders to Highrise as Deals
-* Send shipments to Highrise as Deals notes
+* Order line items, adjustments and payments goes to Highrise as Deals notes
 * Send customers to Highrise as People
 
 [Wombat](http://wombat.co) allows you to connect to your own custom integrations.
