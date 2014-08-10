@@ -26,7 +26,7 @@ describe HighriseEndpoint::Application do
       end
     end
 
-    it "updates a Deal record" do
+    it "creates a Deal record" do
       payload = config.merge({ order: Factories.add_order_payload })
 
       VCR.use_cassette("/order/create") do

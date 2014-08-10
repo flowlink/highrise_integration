@@ -1,6 +1,6 @@
 {
   "id": "R154085346129037",
-  "status": "complete",
+  "status": "canceled",
   "channel": "spree",
   "email": "spree@example.com",
   "currency": "USD",
@@ -11,13 +11,13 @@
     "tax": 10,
     "shipping": 10,
     "payment": 220,
-    "order": 220
+    "order": 420
   },
   "line_items": [
     {
       "product_id": "SPREE-T-SHIRT",
       "name": "Spree T-Shirt",
-      "quantity": 2,
+      "quantity": 4,
       "price": 100
     }
   ],
@@ -63,6 +63,13 @@
       "status": "completed",
       "amount": 220,
       "payment_method": "Credit Card"
+    },
+    {
+      "number": 88,
+      "status": "void",
+      "amount": 100,
+      "payment_method": "Void void"
     }
-  ]
+  ],
+  "highrise_id": "3829703"
 }

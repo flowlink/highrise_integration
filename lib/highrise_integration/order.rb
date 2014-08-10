@@ -27,21 +27,36 @@ module HighriseIntegration
 
     def build_update_note(deal)
       update = ""
-      note = deal.notes.last
 
-      unless note.body.include? line_items_note
+      # Ensure notes are ordered by creation date so we always compare
+      # with latest update
+      ordered_notes = deal.notes.sort_by { |n| n.created_at }.reverse
+
+      if !target_note("Line Items", ordered_notes).include?(line_items_note)
         update << "Line Items Updated: \n\n #{line_items_note}\n\n"
       end
 
-      unless note.body.include? adjustments_note
+      if !target_note("Adjustments", ordered_notes).include?(adjustments_note)
         update << "Adjustments Updated: \n\n #{adjustments_note}\n\n"
       end
 
-      unless note.body.include? payments_note
+      if !target_note("Payments", ordered_notes).include?(payments_note)
         update << "Payments Updated: \n\n #{payments_note}\n\n"
       end
 
       update
+    end
+
+    # Picks the last note where the term shows up
+    #
+    #   e.g. Line Items
+    #
+    def target_note(term, notes)
+      if note = notes.select { |n| n.body.include? term }.first
+        note.body
+      else
+        ""
+      end
     end
 
     def line_items_note
