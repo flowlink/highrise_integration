@@ -34,5 +34,19 @@ describe HighriseEndpoint::Application do
         expect(last_response.status).to eq 200
       end
     end
+
+    it "creates a customer on the fly" do
+      payload = config.merge({ order: Factories.add_order_payload })
+
+      payload[:order][:id] = "R32i534588976"
+      payload[:order][:email] = "luis@spreecommerce.com"
+      payload[:order][:billing_address][:firstname] = "Luis"
+      payload[:order][:billing_address][:lasname] = "Braga"
+
+      VCR.use_cassette("/order/add_with_customer") do
+        post "add_order", payload.to_json, auth
+        expect(last_response.status).to eq 200
+      end
+    end
   end
 end

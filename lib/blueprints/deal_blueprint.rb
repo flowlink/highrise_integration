@@ -14,12 +14,12 @@ module HighriseEndpoint
     attr_accessor :order, :deal
 
     def initialize(payload, deal = nil)
-      @order = payload[:order]
+      @order = payload[:order] || {}
       @deal = deal
     end
 
     def attributes
-      person = Highrise::Person.search(email: order[:email]).first
+      person = set_up_person
 
       {
         currency: order[:currency],
@@ -28,6 +28,24 @@ module HighriseEndpoint
         status:   "won",
         party_id: person ? person.id : nil
       }.with_indifferent_access
+    end
+
+    def set_up_person
+      unless person = Highrise::Person.search(email: order[:email]).first
+        customer_payload = {}
+        customer_payload[:customer] = order.dup
+        customer_payload[:customer][:id] = order[:user_id]
+
+        if order[:billing_address]
+          customer_payload[:customer][:firstname] = order[:billing_address][:firstname]
+          customer_payload[:customer][:lastname] = order[:billing_address][:lastname]
+        end
+
+        person = Highrise::Person.new PersonBlueprint.new(customer_payload).attributes
+        person.save
+      end
+
+      person
     end
   end
 end
