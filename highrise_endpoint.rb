@@ -111,9 +111,8 @@ module HighriseEndpoint
 
       if @order.current_deal?
         @deal = @order.current_deal
-        @deal.load HighriseEndpoint::DealBlueprint.new(@payload, @deal).attributes
 
-        if @deal.save
+        if @deal.update_attributes HighriseEndpoint::DealBlueprint.new(@payload, @deal).attributes
           person_tags.each do |person_tag|
             person.tag!(person_tag)
           end
