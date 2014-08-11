@@ -17,7 +17,7 @@ module HighriseEndpoint
     end
 
     def handle_customer(payload)
-      people = Highrise::Person.search(customer_id: payload[:customer][:id])
+      @person = Highrise::Person.search(email: @payload[:customer][:email]).first
 
       tags = if @payload[:customer][:highrise_tags] && @payload[:customer][:highrise_tags][:person]
         @payload[:customer][:highrise_tags][:person]
@@ -31,17 +31,8 @@ module HighriseEndpoint
         []
       end
 
-      if people.length > 0
-        @person = people.first
-        attr = HighriseEndpoint::PersonBlueprint.new(payload, @person).attributes
-
-        if @person.field("Customer ID") == payload[:customer][:id]
-          @person.load attr
-        else
-          @person = Highrise::Person.new(structure)
-        end
-
-        if @person.save
+      if @person
+        if @person.update_attributes HighriseEndpoint::PersonBlueprint.new(payload, @person).attributes
           tags.each do |tag|
             @person.tag!(tag)
           end
