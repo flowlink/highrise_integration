@@ -10,6 +10,7 @@ gem 'capistrano'
 gem 'honeybadger'
 
 gem "highrise"
+gem 'shotgun'
 
 group :test do
   gem "pry"

@@ -49,7 +49,7 @@ module HighriseEndpoint
 
           result 200, "Person was updated on Highrise."
         else
-          result 500, @person.errors[:base].join("; ")
+          result 500, @person.errors.to_a.join("; ")
         end
       else
         structure = HighriseEndpoint::PersonBlueprint.new(payload).attributes
@@ -72,7 +72,7 @@ module HighriseEndpoint
 
           result 200, "Person was added to Highrise."
         else
-          result 500, @person.errors[:base].join("; ")
+          result 500, @person.errors.to_a.join("; ")
         end
       end
     end
